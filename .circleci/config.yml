@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   node: circleci/node@5
+
 jobs:
   lint_code:
     executor: node/default
@@ -27,11 +28,9 @@ jobs:
       - checkout
       - node/install-packages
       - run:
-          name: Ensure husky is installed (fix for CI)
-          command: npx husky install || true
-      - run:
           name: Build
           command: npm run build
+
 workflows:
   build_app:
     jobs:
