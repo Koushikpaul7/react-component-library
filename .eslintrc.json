@@ -34,5 +34,12 @@
     "react/react-in-jsx-scope": "off",
     "react/prop-types": "off"
   },
-  "ignorePatterns": ["**/*.test.ts", "**/*.test.tsx", "**/*.stories.ts", "**/*.stories.tsx"]
+  "ignorePatterns": [
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "**/*.stories.ts",
+    "**/*.stories.tsx",
+    "commitlint.config.js",
+    "commitlint.config.cjs"
+  ]
 } 
