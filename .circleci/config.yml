@@ -40,5 +40,4 @@ workflows:
             - lint_code
       - build:
           requires:
-            - run_tests
-
+            - run_test
