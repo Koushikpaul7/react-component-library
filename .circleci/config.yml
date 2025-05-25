@@ -5,37 +5,41 @@ orbs:
   node: circleci/node@5
 
 jobs:
-lint_code:
-executor: node/default
-description: Lint code
-steps:
-- checkout
-- node/install-packages
+  lint_code:
+    executor: node/default
+    description: Lint code
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Lint code
+          command: npm run lint:fix
+  run_test:
+    executor: node/default
+    description: Run tests
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Run tests
+          command: npm test
+  build:
+    executor: node/default
+    description: Build
+    steps:
+      - checkout
+      - node/install-packages
+      - run:
+          name: Install Husky
+          command: npx husky install || true
+      - run:
+          name: Build
+          command: npm run build
 
-- run:
-  name: Lint code
-  command: npm run lint:fix
-run_test: 
-executor: node/default
-description: Run tests
-steps:
-- checkout
-- node/install-packages
-- run:
-  name: Run tests
-  command: npm test
-build:
-executor: node/default
-description: Build
-steps:
-- checkout
-- node/install-packages
-- run:
-  name: Build
-  command: npm run build
 workflow:
   build_app:
     jobs:
-    - lint_code
-    - run_test
-    - build
+      - lint_code
+      - run_test
+      - build
+
