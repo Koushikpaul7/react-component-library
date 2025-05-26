@@ -12,4 +12,25 @@ interface PageProps {
 
 declare const Page: React.FC<PageProps>;
 
-export { Page };
+interface ButtonProps {
+    /**
+     * Button contents
+     */
+    label: string;
+    /**
+     * Optional click handler
+     */
+    onClick?: () => void;
+    /**
+     * Button variant
+     */
+    variant?: "primary" | "secondary";
+    /**
+     * Button size
+     */
+    size?: "small" | "medium" | "large";
+}
+declare const Button: React.FC<ButtonProps>;
+
+export { Button, Page };
+export type { ButtonProps };
