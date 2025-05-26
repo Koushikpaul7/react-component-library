@@ -38,9 +38,9 @@ jobs:
       - node/install-packages
       - run:
           name: set up git credentials
-          command:
-           git config --global user.email "$GIT_EMAIL"
-           git config --global user.name "$GIT_NAME"
+          command: |
+            git config --global user.email "$GIT_EMAIL"
+            git config --global user.name "$GIT_NAME"
       - run:
           name: Run release
           command: npm run release
