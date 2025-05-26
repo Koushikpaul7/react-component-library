@@ -50,7 +50,7 @@ jobs:
     steps:
       - checkout
       - node/install-packages
-      -run:
+      - run:
           name: Login to npm
           command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
       - run:
