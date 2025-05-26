@@ -44,9 +44,6 @@ jobs:
       - run:
           name: Run release
           command: npm run release
-    environment:
-      GIT_EMAIL: your-email@example.com # Replace with your git email
-      GIT_NAME: your-git-username       # Replace with your git name
   publish_to_npm:
     executor: node/default
     description: Publish to npm
