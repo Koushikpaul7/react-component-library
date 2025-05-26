@@ -30,7 +30,7 @@ jobs:
       - run:
           name: Build
           command: npm run build
-run_release:
+  run_release:
     executor: node/default
     description: Run release
     steps:
@@ -39,7 +39,7 @@ run_release:
       - run:
           name: Run release
           command: npm run release
-publish_to_npm:
+  publish_to_npm:
     executor: node/default
     description: Publish to npm
     steps:
