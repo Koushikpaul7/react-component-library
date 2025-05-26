@@ -42,15 +42,22 @@ jobs:
             git config --global user.email "$GIT_EMAIL"
             git config --global user.name "$GIT_NAME"
       - run:
-          name: Get latest version
+          name: Get latest version and set new version
           command: |
             LATEST_VERSION=$(npm view @koushik7/react-component-library version)
             echo "Latest version: $LATEST_VERSION"
+            # Get current local package.json version
+            LOCAL_VERSION=$(node -p "require('./package.json').version")
+            echo "Local version: $LOCAL_VERSION"
             # Increment patch version
             NEW_VERSION=$(echo $LATEST_VERSION | awk -F. '{$NF = $NF + 1;} 1' | sed 's/ /./g')
             echo "New version: $NEW_VERSION"
-            # Update package.json version
-            npm version $NEW_VERSION --no-git-tag-version
+            # Only update if different
+            if [ "$NEW_VERSION" != "$LOCAL_VERSION" ]; then
+              npm version $NEW_VERSION --no-git-tag-version
+            else
+              echo "Version already up-to-date. Skipping version bump."
+            fi
       - run:
           name: Run release
           command: npm run release
