@@ -116,5 +116,8 @@
   "peerDependencies": {
     "react": ">=17",
     "react-dom": ">=17"
+  },
+  "dependencies": {
+    "whoami": "^0.0.3"
   }
 }
